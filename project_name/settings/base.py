@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "apps.search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
-    "wagtail.embeds",
+    "{{ project_name }}.apps.MongoWagtailEmbedsAppConfig",
     "wagtail.sites",
     "wagtail.users",
     "wagtail.snippets",
