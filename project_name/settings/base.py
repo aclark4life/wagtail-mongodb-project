@@ -192,3 +192,5 @@ WAGTAILDOCS_EXTENSIONS = [
     "xlsx",
     "zip",
 ]
+
+DEFAULT_AUTO_FIELD = "django_mongodb.fields.ObjectIdAutoField"
