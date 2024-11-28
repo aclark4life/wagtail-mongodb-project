@@ -8,6 +8,7 @@ from wagtail.documents.apps import WagtailDocsAppConfig
 from wagtail.embeds.apps import WagtailEmbedsAppConfig
 from wagtail.contrib.forms.apps import WagtailFormsAppConfig
 from wagtail.images.apps import WagtailImagesAppConfig
+from wagtail.contrib.redirects.apps import WagtailRedirectsAppConfig
 
 
 class MongoAdminConfig(AdminConfig):
@@ -47,4 +48,8 @@ class MongoWagtailFormsAppConfig(WagtailFormsAppConfig):
 
 
 class MongoWagtailImagesAppConfig(WagtailImagesAppConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoWagtailRedirectsAppConfig(WagtailRedirectsAppConfig):
     default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
