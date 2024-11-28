@@ -200,4 +200,5 @@ MIGRATION_MODULES = {
     'auth': 'mongo_migrations.auth',
     'contenttypes': 'mongo_migrations.contenttypes',
     'wagtailadmin': 'mongo_migrations.wagtailadmin',
+    'wagtailredirects': 'mongo_migrations.wagtailredirects',
 }
