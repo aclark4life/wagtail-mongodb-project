@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     "apps.home",
     "apps.search",
-    "wagtail.contrib.forms",
+    "{{ project_name }}.apps.MongoWagtailFormsAppConfig",
     "wagtail.contrib.redirects",
     "{{ project_name }}.apps.MongoWagtailEmbedsAppConfig",
     "wagtail.sites",
