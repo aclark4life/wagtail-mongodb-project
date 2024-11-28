@@ -4,7 +4,7 @@ from django.contrib.contenttypes.apps import ContentTypesConfig
 from taggit.apps import TaggitAppConfig
 from wagtail.admin.apps import WagtailAdminAppConfig
 from wagtail.apps import WagtailAppConfig
-from wagtail.documents import WagtailDocsAppConfig
+from wagtail.documents.apps import WagtailDocsAppConfig
 
 
 class MongoAdminConfig(AdminConfig):
