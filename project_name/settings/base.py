@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     "apps.home",
     "apps.search",
     "{{ project_name }}.apps.MongoWagtailFormsAppConfig",
-    "wagtail.contrib.redirects",
+    "{{ project_name }}.apps.MongoWagtailRedirectsAppConfig",
     "{{ project_name }}.apps.MongoWagtailEmbedsAppConfig",
     "wagtail.sites",
     "wagtail.users",
