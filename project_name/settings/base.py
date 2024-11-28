@@ -196,10 +196,5 @@ WAGTAILDOCS_EXTENSIONS = [
 DEFAULT_AUTO_FIELD = "django_mongodb.fields.ObjectIdAutoField"
 
 MIGRATION_MODULES = {
-    'admin': 'mongo_migrations.admin',
-    'auth': 'mongo_migrations.auth',
-    'contenttypes': 'mongo_migrations.contenttypes',
     'wagtailadmin': 'mongo_migrations.wagtailadmin',
-    'wagtailredirects': 'mongo_migrations.wagtailredirects',
-    'wagtailsearch': 'mongo_migrations.wagtailsearch',
 }
