@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "wagtail.users",
     "wagtail.snippets",
     "{{ project_name }}.apps.MongoWagtailDocsAppConfig",
-    "wagtail.images",
+    "{{ project_name }}.apps.MongoWagtailImagesAppConfig",
     "wagtail.search",
     "{{ project_name }}.apps.MongoWagtailAdminConfig",
     "{{ project_name }}.apps.MongoWagtailConfig",
