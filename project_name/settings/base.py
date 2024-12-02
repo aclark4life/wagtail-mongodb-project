@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-import django_mongodb
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -26,24 +24,24 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "apps.home",
-    "apps.search",
-    "{{ project_name }}.apps.MongoWagtailFormsAppConfig",
-    "{{ project_name }}.apps.MongoWagtailRedirectsAppConfig",
-    "{{ project_name }}.apps.MongoWagtailEmbedsAppConfig",
+    "home",
+    "search",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
     "wagtail.sites",
-    "{{ project_name }}.apps.MongoWagtailUsersAppConfig",
+    "wagtail.users",
     "wagtail.snippets",
-    "{{ project_name }}.apps.MongoWagtailDocsAppConfig",
-    "{{ project_name }}.apps.MongoWagtailImagesAppConfig",
-    "{{ project_name }}.apps.MongoWagtailSearchAppConfig",
-    "{{ project_name }}.apps.MongoWagtailAdminConfig",
-    "{{ project_name }}.apps.MongoWagtailConfig",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
     "modelcluster",
-    "{{ project_name }}.apps.MongoTaggitConfig",
-    "{{ project_name }}.apps.MongoAdminConfig",
-    "{{ project_name }}.apps.MongoAuthConfig",
-    "{{ project_name }}.apps.MongoContentTypesConfig",
+    "taggit",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
@@ -86,10 +84,13 @@ WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 
-DATABASES = dict()
-DATABASES["default"] = django_mongodb.parse(
-    "mongodb://localhost:27017/{{ project_name }}"
-)
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#auth-password-validators
@@ -180,24 +181,4 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 # This can be omitted to allow all files, but note that this may present a security risk
 # if untrusted users are allowed to upload files -
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
-WAGTAILDOCS_EXTENSIONS = [
-    "csv",
-    "docx",
-    "key",
-    "odt",
-    "pdf",
-    "pptx",
-    "rtf",
-    "txt",
-    "xlsx",
-    "zip",
-]
-
-DEFAULT_AUTO_FIELD = "django_mongodb.fields.ObjectIdAutoField"
-
-MIGRATION_MODULES = {
-    'admin': 'mongo_migrations.admin',
-    'auth': 'mongo_migrations.auth',
-    'contenttypes': 'mongo_migrations.contenttypes',
-    'wagtailadmin': 'mongo_migrations.wagtailadmin',
-}
+WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
