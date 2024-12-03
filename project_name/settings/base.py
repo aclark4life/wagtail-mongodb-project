@@ -26,7 +26,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "home",
     "search",
     "{{ project_name }}.apps.MongoWagtailFormsAppConfig",
     "{{ project_name }}.apps.MongoWagtailRedirectsAppConfig",
@@ -193,7 +192,6 @@ MIGRATION_MODULES = {
     "wagtailadmin": "mongo_migrations.wagtailadmin",
     "wagtailcore": "mongo_migrations.wagtailcore",
     "wagtailforms": "mongo_migrations.wagtailforms",
-    "home": "home.migrations",
     "wagtailembeds": "mongo_migrations.wagtailembeds",
     "wagtailusers": "mongo_migrations.wagtailusers",
 }
