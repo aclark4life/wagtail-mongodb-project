@@ -180,6 +180,8 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
+DEFAULT_AUTO_FIELD = "django_mongodb.fields.ObjectIdAutoField"
+
 MIGRATION_MODULES = {
     'admin': 'mongo_migrations.admin',
     'auth': 'mongo_migrations.auth',
