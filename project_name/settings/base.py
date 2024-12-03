@@ -87,7 +87,7 @@ WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 
 DATABASES = {}
-DATABASES["default"] = django_mongodb.parse("mongodb://localhost:27017/{{ project_name }}")
+DATABASES["default"] = django_mongodb.parse_uri("mongodb://localhost:27017/{{ project_name }}")
 
 
 # Password validation
