@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "{{ project_name }}.apps.MongoWagtailRedirectsAppConfig",
     "{{ project_name }}.apps.MongoWagtailEmbedsAppConfig",
     "wagtail.sites",
-    "wagtail.users",
+    "{{ project_name }}.apps.MongoWagtailUsersAppConfig",
     "wagtail.snippets",
     "{{ project_name }}.apps.MongoWagtailDocsAppConfig",
     "{{ project_name }}.apps.MongoWagtailImagesAppConfig",
@@ -195,4 +195,5 @@ MIGRATION_MODULES = {
     "wagtailforms": "mongo_migrations.wagtailforms",
     "home": "home.migrations",
     "wagtailembeds": "mongo_migrations.wagtailembeds",
+    "wagtailusers": "mongo_migrations.wagtailusers",
 }

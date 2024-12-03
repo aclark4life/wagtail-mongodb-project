@@ -10,6 +10,7 @@ from wagtail.admin.apps import WagtailAdminAppConfig
 from wagtail.apps import WagtailAppConfig
 from wagtail.contrib.forms.apps import WagtailFormsAppConfig
 from wagtail.embeds.apps import WagtailEmbedsAppConfig
+from wagtail.users.apps import WagtailUsersAppConfig
 
 
 class MongoTaggitAppConfig(TaggitAppConfig):
@@ -57,4 +58,8 @@ class MongoWagtailFormsAppConfig(WagtailFormsAppConfig):
 
 
 class MongoWagtailEmbedsAppConfig(WagtailEmbedsAppConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoWagtailUsersAppConfig(WagtailUsersAppConfig):
     default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
