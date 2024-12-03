@@ -193,4 +193,5 @@ MIGRATION_MODULES = {
     "wagtailadmin": "mongo_migrations.wagtailadmin",
     "wagtailcore": "mongo_migrations.wagtailcore",
     "wagtailforms": "mongo_migrations.wagtailforms",
+    "home": "home.migrations",
 }
