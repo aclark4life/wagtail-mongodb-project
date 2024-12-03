@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "wagtail.users",
     "wagtail.snippets",
     "{{ project_name }}.apps.MongoWagtailDocsAppConfig",
-    "wagtail.images",
+    "{{ project_name }}.apps.MongoWagtailImagesAppConfig",
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
@@ -188,4 +188,5 @@ MIGRATION_MODULES = {
     "taggit": "mongo_migrations.taggit",
     "wagtaildocs": "mongo_migrations.wagtaildocs",
     "wagtailredirects": "mongo_migrations.wagtailredirects",
+    "wagtailimages": "mongo_migrations.wagtailimages",
 }
