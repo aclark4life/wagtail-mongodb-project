@@ -3,6 +3,7 @@ from django.contrib.auth.apps import AuthConfig
 from django.contrib.contenttypes.apps import ContentTypesConfig
 from taggit.apps import TaggitAppConfig
 from wagtail.documents.apps import WagtailDocsAppConfig
+from wagtail.contrib.redirects.apps import WagtailRedirectsAppConfig
 
 
 class MongoTaggitAppConfig(TaggitAppConfig):
@@ -22,4 +23,8 @@ class MongoAuthConfig(AuthConfig):
 
 
 class MongoContentTypesConfig(ContentTypesConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoWagtailRedirectsAppConfig(WagtailRedirectsAppConfig):
     default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
