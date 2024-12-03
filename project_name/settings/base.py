@@ -197,5 +197,5 @@ MIGRATION_MODULES = {
     "wagtailforms": "mongo_migrations.wagtailforms",
     "wagtailembeds": "mongo_migrations.wagtailembeds",
     "wagtailusers": "mongo_migrations.wagtailusers",
-    "home": "home.migrations",
+    "home": "mongo_migrations.home",
 }
