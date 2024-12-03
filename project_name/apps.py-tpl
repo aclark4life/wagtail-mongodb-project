@@ -6,6 +6,7 @@ from wagtail.documents.apps import WagtailDocsAppConfig
 from wagtail.contrib.redirects.apps import WagtailRedirectsAppConfig
 from wagtail.images.apps import WagtailImagesAppConfig
 from wagtail.search.apps import WagtailSearchAppConfig
+from wagtail.admin.apps import WagtailAdminAppConfig
 
 
 class MongoTaggitAppConfig(TaggitAppConfig):
@@ -37,4 +38,8 @@ class MongoWagtailImagesAppConfig(WagtailImagesAppConfig):
 
 
 class MongoWagtailSearchAppConfig(WagtailSearchAppConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoWagtailAdminAppConfig(WagtailAdminAppConfig):
     default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
