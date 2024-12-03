@@ -34,16 +34,16 @@ INSTALLED_APPS = [
     "wagtail.sites",
     "wagtail.users",
     "wagtail.snippets",
-    "wagtail.documents",
+    "{{ project_name }}.apps.MongoWagtailDocsAppConfig",
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
     "wagtail",
     "modelcluster",
     "{{ project_name }}.apps.MongoTaggitAppConfig",
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
+    '{{ project_name }}.apps.MongoAdminConfig',
+    '{{ project_name }}.apps.MongoAuthConfig',
+    '{{ project_name }}.apps.MongoContentTypesConfig',
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
@@ -182,5 +182,9 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
 MIGRATION_MODULES = {
+    'admin': 'mongo_migrations.admin',
+    'auth': 'mongo_migrations.auth',
+    'contenttypes': 'mongo_migrations.contenttypes',
     "taggit": "mongo_migrations.taggit",
+    "wagtaildocs": "mongo_migrations.wagtaildocs",
 }

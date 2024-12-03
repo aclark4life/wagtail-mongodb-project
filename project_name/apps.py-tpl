@@ -1,5 +1,25 @@
+from django.contrib.admin.apps import AdminConfig
+from django.contrib.auth.apps import AuthConfig
+from django.contrib.contenttypes.apps import ContentTypesConfig
 from taggit.apps import TaggitAppConfig
+from wagtail.documents.apps import WagtailDocsAppConfig
 
 
 class MongoTaggitAppConfig(TaggitAppConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoWagtailDocsAppConfig(WagtailDocsAppConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoAdminConfig(AdminConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoAuthConfig(AuthConfig):
+    default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
+
+
+class MongoContentTypesConfig(ContentTypesConfig):
     default_auto_field = "django_mongodb.fields.ObjectIdAutoField"
