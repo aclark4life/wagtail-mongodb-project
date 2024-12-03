@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "wagtail.admin",
     "wagtail",
     "modelcluster",
-    "{{ project_name }}.apps.MongoTaggitConfig",
+    "{{ project_name }}.apps.MongoTaggitAppConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
