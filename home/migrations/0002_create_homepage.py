@@ -20,6 +20,7 @@ def create_homepage(apps, schema_editor):
 
     # Create locale
     locale = Locale()
+    locale.save()
 
     # Create a new homepage
     homepage = HomePage.objects.create(
