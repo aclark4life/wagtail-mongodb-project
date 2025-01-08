@@ -2,7 +2,7 @@
 
 import django.core.serializers.json
 import django.db.models.deletion
-import django_mongodb.fields
+import django_mongodb_backend.fields
 import modelcluster.fields
 import uuid
 import wagtail.models
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Collection',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('path', models.CharField(max_length=255, unique=True)),
                 ('depth', models.PositiveIntegerField()),
                 ('numchild', models.PositiveIntegerField(default=0)),
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Task',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255, verbose_name='name')),
                 ('active', models.BooleanField(default=True, help_text='Active tasks can be added to workflows. Deactivating a task does not remove it from existing workflows.', verbose_name='active')),
                 ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='wagtail_tasks', to='contenttypes.contenttype', verbose_name='content type')),
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Locale',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('language_code', models.CharField(max_length=100, unique=True)),
             ],
             options={
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Page',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('path', models.CharField(max_length=255, unique=True)),
                 ('depth', models.PositiveIntegerField()),
                 ('numchild', models.PositiveIntegerField(default=0)),
@@ -102,7 +102,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Workflow',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255, verbose_name='name')),
                 ('active', models.BooleanField(default=True, help_text='Active workflows can be added to pages/snippets. Deactivating a workflow does not remove it from existing pages/snippets.', verbose_name='active')),
             ],
@@ -115,7 +115,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CollectionViewRestriction',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('restriction_type', models.CharField(choices=[('none', 'Public'), ('password', 'Private, accessible with a shared password'), ('login', 'Private, accessible to any logged-in users'), ('groups', 'Private, accessible to users in specific groups')], max_length=20)),
                 ('password', models.CharField(blank=True, help_text='Shared passwords should not be used to protect sensitive content. Anyone who has this password will be able to view the content.', max_length=255, verbose_name='shared password')),
                 ('collection', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='view_restrictions', to='wagtailcore.collection', verbose_name='collection')),
@@ -129,7 +129,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Comment',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('text', models.TextField()),
                 ('contentpath', models.TextField()),
                 ('position', models.TextField(blank=True)),
@@ -148,7 +148,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CommentReply',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('text', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
@@ -163,7 +163,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GroupPagePermission',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='page_permissions', to='auth.group', verbose_name='group')),
                 ('permission', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='auth.permission', verbose_name='permission')),
                 ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='group_permissions', to='wagtailcore.page', verbose_name='page')),
@@ -176,7 +176,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PageSubscription',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('comment_notifications', models.BooleanField()),
                 ('page', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subscribers', to='wagtailcore.page')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='page_subscriptions', to=settings.AUTH_USER_MODEL)),
@@ -185,7 +185,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PageViewRestriction',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('restriction_type', models.CharField(choices=[('none', 'Public'), ('password', 'Private, accessible with a shared password'), ('login', 'Private, accessible to any logged-in users'), ('groups', 'Private, accessible to users in specific groups')], max_length=20)),
                 ('password', models.CharField(blank=True, help_text='Shared passwords should not be used to protect sensitive content. Anyone who has this password will be able to view the content.', max_length=255, verbose_name='shared password')),
                 ('groups', models.ManyToManyField(blank=True, to='auth.group', verbose_name='groups')),
@@ -199,7 +199,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ReferenceIndex',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('object_id', models.CharField(max_length=255, verbose_name='object id')),
                 ('to_object_id', models.CharField(max_length=255, verbose_name='object id')),
                 ('model_path', models.TextField()),
@@ -213,7 +213,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Revision',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('object_id', models.CharField(max_length=255, verbose_name='object id')),
                 ('created_at', models.DateTimeField(db_index=True, verbose_name='created at')),
                 ('object_str', models.TextField(default='')),
@@ -231,7 +231,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PageLogEntry',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('label', models.TextField()),
                 ('action', models.CharField(blank=True, db_index=True, max_length=255)),
                 ('data', models.JSONField(blank=True, default=dict, encoder=django.core.serializers.json.DjangoJSONEncoder)),
@@ -263,7 +263,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ModelLogEntry',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('label', models.TextField()),
                 ('action', models.CharField(blank=True, db_index=True, max_length=255)),
                 ('data', models.JSONField(blank=True, default=dict, encoder=django.core.serializers.json.DjangoJSONEncoder)),
@@ -290,7 +290,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Site',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('hostname', models.CharField(db_index=True, max_length=255, verbose_name='hostname')),
                 ('port', models.IntegerField(default=80, help_text='Set this to something other than 80 if you need a specific port number to appear in URLs (e.g. development on port 8000). Does not affect request handling (so port forwarding still works).', verbose_name='port')),
                 ('site_name', models.CharField(blank=True, help_text='Human-readable name for the site.', max_length=255, verbose_name='site name')),
@@ -305,7 +305,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TaskState',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('status', models.CharField(choices=[('in_progress', 'In progress'), ('approved', 'Approved'), ('rejected', 'Rejected'), ('skipped', 'Skipped'), ('cancelled', 'Cancelled')], default='in_progress', max_length=50, verbose_name='status')),
                 ('started_at', models.DateTimeField(auto_now_add=True, verbose_name='started at')),
                 ('finished_at', models.DateTimeField(blank=True, null=True, verbose_name='finished at')),
@@ -324,7 +324,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UploadedFile',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('file', models.FileField(max_length=200, upload_to='wagtail_uploads')),
                 ('for_content_type', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='uploads', to='contenttypes.contenttype', verbose_name='for content type')),
                 ('uploaded_by_user', models.ForeignKey(blank=True, editable=False, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='uploaded by user')),
@@ -340,7 +340,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WorkflowState',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('object_id', models.CharField(max_length=255, verbose_name='object id')),
                 ('status', models.CharField(choices=[('in_progress', 'In progress'), ('approved', 'Approved'), ('needs_changes', 'Needs changes'), ('cancelled', 'Cancelled')], default='in_progress', max_length=50, verbose_name='status')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
@@ -363,7 +363,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WorkflowTask',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
                 ('task', models.ForeignKey(limit_choices_to={'active': True}, on_delete=django.db.models.deletion.CASCADE, related_name='workflow_tasks', to='wagtailcore.task', verbose_name='task')),
                 ('workflow', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='workflow_tasks', to='wagtailcore.workflow', verbose_name='workflow_tasks')),
@@ -391,7 +391,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GroupCollectionPermission',
             fields=[
-                ('id', django_mongodb.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', django_mongodb_backend.fields.ObjectIdAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('collection', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='group_permissions', to='wagtailcore.collection', verbose_name='collection')),
                 ('group', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='collection_permissions', to='auth.group', verbose_name='group')),
                 ('permission', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='auth.permission', verbose_name='permission')),
