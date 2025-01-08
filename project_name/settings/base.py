@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
 """
 
-import django_mongodb
+import django_mongodb_backend
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -86,9 +86,9 @@ WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = django_mongodb.parse_uri("mongodb://localhost:27017/{{ project_name }}")
-
+DATABASES = {
+    "default": django_mongodb_backend.parse_uri("mongodb://localhost:27017/{{ project_name }}"),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#auth-password-validators
@@ -181,7 +181,7 @@ WAGTAILADMIN_BASE_URL = "http://example.com"
 # see https://docs.wagtail.org/en/stable/advanced_topics/deploying.html#user-uploaded-files
 WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip']
 
-DEFAULT_AUTO_FIELD = "django_mongodb.fields.ObjectIdAutoField"
+DEFAULT_AUTO_FIELD = "django_mongodb_backend.fields.ObjectIdAutoField"
 
 MIGRATION_MODULES = {
     'admin': 'mongo_migrations.admin',
