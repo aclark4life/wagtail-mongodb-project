@@ -10,8 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
 """
 
-import django_mongodb_backend
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -86,9 +84,12 @@ WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 
-MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/{{ project_name }}")
 DATABASES = {
-    "default": django_mongodb_backend.parse_uri(MONGODB_URI),
+    "default": {
+        "ENGINE": "django_mongodb_backend",
+        "HOST": os.environ.get("MONGODB_URI"),
+        "NAME": "{{ project_name }}",
+    },
 }
 
 # Password validation
