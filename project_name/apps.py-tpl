@@ -1,3 +1,4 @@
+from django.apps import AppConfig
 from django.contrib.admin.apps import AdminConfig
 from django.contrib.auth.apps import AuthConfig
 from django.contrib.contenttypes.apps import ContentTypesConfig
@@ -285,4 +286,9 @@ class MongoWagtailEmbedsAppConfig(WagtailEmbedsAppConfig):
 
 
 class MongoWagtailUsersAppConfig(WagtailUsersAppConfig):
+    default_auto_field = "django_mongodb_backend.fields.ObjectIdAutoField"
+
+
+class ProjectConfig(AppConfig):
+    name = "{{ project_name }}"
     default_auto_field = "django_mongodb_backend.fields.ObjectIdAutoField"
