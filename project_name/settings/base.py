@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.routable_page",
     "wagtail.contrib.table_block",
     "wagtail.contrib.typed_table_block",
-    "wagtail.contrib.search_promotions",
+    "{{ project_name }}.apps.MongoWagtailSearchPromotionsAppConfig",
     "wagtail.sites",
     "{{ project_name }}.apps.MongoWagtailUsersAppConfig",
     "wagtail.snippets",
